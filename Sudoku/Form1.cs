@@ -15,6 +15,15 @@ namespace Sudoku
         public Form1()
         {
             InitializeComponent();
+            Grille jeux = new Grille();
+            jeux.test();
+            this.richTextBox1.Text = jeux.ToString();
+            this.textBox1.Text = jeux.nestPasDansLigCol(5,0,0).ToString();
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
