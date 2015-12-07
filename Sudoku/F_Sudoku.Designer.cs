@@ -28,20 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Grille = new System.Windows.Forms.TableLayoutPanel();
+            this.title = new System.Windows.Forms.Label();
+            this.buttonSolution = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // Grille
+            // 
+            this.Grille.ColumnCount = 9;
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.Location = new System.Drawing.Point(135, 87);
+            this.Grille.Name = "Grille";
+            this.Grille.RowCount = 9;
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.Grille.Size = new System.Drawing.Size(515, 409);
+            this.Grille.TabIndex = 0;
+            // 
+            // title
+            // 
+            this.title.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.title.AutoSize = true;
+            this.title.Font = new System.Drawing.Font("Book Antiqua", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Location = new System.Drawing.Point(312, 30);
+            this.title.Name = "title";
+            this.title.Size = new System.Drawing.Size(157, 26);
+            this.title.TabIndex = 1;
+            this.title.Text = "Jeu du Sudoku";
+            this.title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // buttonSolution
+            // 
+            this.buttonSolution.Location = new System.Drawing.Point(352, 502);
+            this.buttonSolution.Name = "buttonSolution";
+            this.buttonSolution.Size = new System.Drawing.Size(75, 23);
+            this.buttonSolution.TabIndex = 2;
+            this.buttonSolution.Text = "Solution";
+            this.buttonSolution.UseVisualStyleBackColor = true;
+            this.buttonSolution.Click += new System.EventHandler(this.buttonSolution_Click);
             // 
             // F_Sudoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(794, 584);
+            this.Controls.Add(this.buttonSolution);
+            this.Controls.Add(this.title);
+            this.Controls.Add(this.Grille);
             this.Name = "F_Sudoku";
             this.Text = "Sudoku";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TableLayoutPanel Grille;
+        private System.Windows.Forms.Label title;
+        private System.Windows.Forms.Button buttonSolution;
     }
 }
 
