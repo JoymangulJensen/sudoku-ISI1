@@ -20,14 +20,15 @@ namespace Sudoku
             FillGrilleSolution(GrilleSolution, content);
         }
 
-        private void FillGrilleSolution(TableLayoutPanel g, int[,] content)
+        // Rempli la grille solution 
+        private void FillGrilleSolution(TableLayoutPanel g, int[,] contentSolution)
         {
             for (int col = 0; col < g.ColumnCount; col++)
             {
                 for (int row = 0; row < g.RowCount; row++)
                 {
                     Label label = new Label();
-                    label.Text = Convert.ToString(content[col, row]);
+                    label.Text = Convert.ToString(contentSolution[col, row]);
                     label.Dock = DockStyle.Fill;
                     label.TextAlign = ContentAlignment.MiddleCenter;
                     g.Controls.Add(label, col, row);

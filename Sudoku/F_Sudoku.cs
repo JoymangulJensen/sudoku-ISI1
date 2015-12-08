@@ -41,6 +41,7 @@ namespace Sudoku
         {
             Button button = new Button();
             button.Dock = DockStyle.Fill;
+            button.Padding = new Padding(0);
             button.Click += new System.EventHandler(this.button_Click);
 
             return button;
