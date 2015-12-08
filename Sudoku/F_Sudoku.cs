@@ -13,6 +13,9 @@ namespace Sudoku
     public partial class F_Sudoku : Form
     {
 
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
         public F_Sudoku()
         {
             InitializeComponent();
@@ -23,7 +26,11 @@ namespace Sudoku
             FillGrille(Grille, content);
         }
 
-
+        /// <summary>
+        /// Remplie la grille avec le contenu générer par l'algorithme
+        /// </summary>
+        /// <param name="g"> La grille GUI</param>
+        /// <param name="content">Le contenu de la grille sous forme de tableau 2D d'entier</param>
         private void FillGrille(TableLayoutPanel g, int[,] content)
         {
             for (int col = 0; col < g.ColumnCount; col ++)
@@ -37,6 +44,10 @@ namespace Sudoku
             }
         }
 
+        /// <summary>
+        /// Prépare les boutons : crée une instance et règle les propriétés graphiques
+        /// </summary>
+        /// <returns>Retourne le bouton à ajouter dans chaque cellule de la grille</returns>
         private Button setUpButton()
         {
             Button button = new Button();
@@ -47,6 +58,11 @@ namespace Sudoku
             return button;
         }
 
+        /// <summary>
+        /// Gestion de l'évènement du clic sur une case
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
@@ -66,18 +82,55 @@ namespace Sudoku
             }
             */
 
-            TableLayoutPanel t = (TableLayoutPanel)button.Parent;
+            int colIndex, rowIndex = 0;
+            int value = int.Parse(popUpForm.Value);
 
-            TableLayoutPanelCellPosition pos = t.GetPositionFromControl(button);
+            try
+            {
+                TableLayoutPanel t = (TableLayoutPanel)button.Parent;
 
-            MessageBox.Show("Vous avez édité la case aux coordonées : (" + (pos.Column + 1) + ", " + (pos.Row + 1) + ")");
+                TableLayoutPanelCellPosition position = t.GetPositionFromControl(button);
 
-            // lancer Vérifs
+                colIndex = position.Column;
+                rowIndex = position.Row;
 
-            button.Text = popUpForm.Value;
+                MessageBox.Show("Vous avez édité la case aux coordonées : (" + (colIndex + 1) + ", " + (rowIndex + 1) + ")");
+
+            }
+            catch (InvalidCastException)
+            {
+                MessageBox.Show("Erreur de type sur un downcast");
+                throw;
+            }
+
+            if (correctValue(colIndex, rowIndex, value))
+            {
+                button.Text = Convert.ToString(value);
+            }
+            {
+                MessageBox.Show("Valeur impossible !");
+            }
             popUpForm.Dispose();
         }
 
+        /// <summary>
+        ///  Vérifie que la valeur saisie est correcte
+        /// </summary>
+        /// <param name="colIndex">Indice de colonne (0 à 8) de la case sélectionnée</param>
+        /// <param name="rowIndex">Indice de ligne (0 à 8) de la case sélectionnée</param>
+        /// <param name="value">Valeur choisie</param>
+        /// <returns></returns>
+        private bool correctValue(int colIndex, int rowIndex, int value)
+        {
+            // TODO : à implémenter avec le merge
+            return true;
+        }
+
+        /// <summary>
+        /// Méthode de test pour remplir une grille non aléatoire de Sudoku Valide
+        /// </summary>
+        /// <param name="content"></param>
+        /// <returns></returns>
         public static int[,] FillContentTest(int[,] content)
         {
             for (int col = 0; col < content.GetLength(0); col++)
@@ -90,10 +143,25 @@ namespace Sudoku
             return content;
         }
 
+        /// <summary>
+        /// Gestion de l'évènement click du bouton afficher la solution
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSolution_Click(object sender, EventArgs e)
         {
             F_Solution f_solution = new F_Solution();
             f_solution.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// Gestion de l'évènement click du bouton pour effacer/réinitialliser la grille
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            // this.FillGrille() ...
         }
     }
 }

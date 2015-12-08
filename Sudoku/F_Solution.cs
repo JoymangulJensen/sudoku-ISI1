@@ -12,6 +12,9 @@ namespace Sudoku
 {
     public partial class F_Solution : Form
     {
+        /// <summary>
+        /// Constructeur du formulaire : On rempli simplement la grille avec tous les chiffres de la solution
+        /// </summary>
         public F_Solution()
         {
             InitializeComponent();
@@ -20,7 +23,9 @@ namespace Sudoku
             FillGrilleSolution(GrilleSolution, content);
         }
 
-        // Rempli la grille solution 
+        /// <summary>
+        /// Rempli la grille solution 
+        /// </summary>
         private void FillGrilleSolution(TableLayoutPanel g, int[,] contentSolution)
         {
             for (int col = 0; col < g.ColumnCount; col++)

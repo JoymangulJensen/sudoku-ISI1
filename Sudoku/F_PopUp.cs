@@ -12,6 +12,9 @@ namespace Sudoku
 {
     public partial class F_PopUp : Form
     {
+
+        private TableLayoutPanel table;
+
         /// <summary>
         /// Formulaire Pop Up permettant d'éditer une case : affiche un pavé numérique
         /// </summary>
@@ -19,10 +22,16 @@ namespace Sudoku
         public F_PopUp(String previousValue)
         {
             InitializeComponent();
-
             this.value = previousValue;
+            this.genererGrille();
+        }
 
-            TableLayoutPanel table = new TableLayoutPanel();
+        /// <summary>
+        /// Génère la grille de sélection d'un chiffre
+        /// </summary>
+        private void genererGrille()
+        {
+            this.table = new TableLayoutPanel();
             table.Dock = DockStyle.Fill;
             table.ColumnCount = 3;
             table.RowCount = 3;
@@ -42,7 +51,7 @@ namespace Sudoku
                 for (int row = 0; row < table.RowCount; row++)
                 {
                     Button button = new Button();
-                    button.Text = Convert.ToString(index ++);
+                    button.Text = Convert.ToString(index++);
                     button.Dock = DockStyle.Fill;
                     button.Click += new EventHandler(popUp_button_Click);
                     table.Controls.Add(button, row, col);

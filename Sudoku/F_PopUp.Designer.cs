@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Name = "F_PopUp";
-            this.Text = "F_PopUp";
+            this.Text = "Sélectionnez un chiffre";
             this.ResumeLayout(false);
 
         }
