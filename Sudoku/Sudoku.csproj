@@ -44,8 +44,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F_PopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_PopUp.Designer.cs">
+      <DependentUpon>F_PopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Solution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Solution.Designer.cs">
+      <DependentUpon>F_Solution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="F_Sudoku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Sudoku.Designer.cs">
+      <DependentUpon>F_Sudoku.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="F_PopUp.resx">
+      <DependentUpon>F_PopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Solution.resx">
+      <DependentUpon>F_Solution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Sudoku.resx">
+      <DependentUpon>F_Sudoku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -54,6 +81,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -67,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GrilleTrait.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
