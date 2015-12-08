@@ -15,7 +15,7 @@ namespace Sudoku
         public Form1()
         {
             InitializeComponent();
-            Grille jeux = new Grille(9);
+            Grille jeux = new Grille();
             jeux.generateGame();
             this.richTextBox1.Text = jeux.ToString();
         }
