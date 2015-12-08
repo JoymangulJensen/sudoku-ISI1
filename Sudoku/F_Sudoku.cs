@@ -13,17 +13,25 @@ namespace Sudoku
     public partial class F_Sudoku : Form
     {
 
+        private Grille grille;
+
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
         public F_Sudoku()
         {
             InitializeComponent();
-            int[,] content = new int[9,9];
-            content = FillContentTest(content);
 
+            grille = new Grille();
 
-            FillGrille(Grille, content);
+            grille.generateGame();
+
+            grille.cacher(30);
+
+            // int[,] content = new int[9,9];
+            // FillContentTest(content);
+            
+            FillGrille(Grille, grille.Partielle);
         }
 
         /// <summary>
@@ -33,15 +41,34 @@ namespace Sudoku
         /// <param name="content">Le contenu de la grille sous forme de tableau 2D d'entier</param>
         private void FillGrille(TableLayoutPanel g, int[,] content)
         {
+            String value = "";
             for (int col = 0; col < g.ColumnCount; col ++)
             {
                 for (int row = 0; row < g.RowCount; row ++)
                 {
                     Button button = setUpButton();
-                    button.Text = Convert.ToString(content[col, row]);
+                    
+                    if (content[col, row] == 0)
+                    {
+                        value = "";
+                    }
+                    else
+                    {
+                        value = Convert.ToString(content[col, row]);
+                        //button.EnabledChanged += Button_EnabledChanged;
+                        button.BackColor = Color.DarkGray;
+                        button.Enabled = false;
+                    }
+                    button.Text = value;
                     g.Controls.Add(button, col, row);
                 }
             }
+        }
+
+        private void Button_EnabledChanged(object sender, System.EventArgs e)
+        {
+            Button button1 = (Button) sender;
+            // button1
         }
 
         /// <summary>
@@ -83,7 +110,16 @@ namespace Sudoku
             */
 
             int colIndex, rowIndex = 0;
-            int value = int.Parse(popUpForm.Value);
+            int valueInt;
+
+            try
+            {
+                valueInt = int.Parse(popUpForm.Value);
+            }
+            catch (FormatException)
+            {
+                valueInt = 0;
+            }
 
             try
             {
@@ -94,7 +130,7 @@ namespace Sudoku
                 colIndex = position.Column;
                 rowIndex = position.Row;
 
-                MessageBox.Show("Vous avez édité la case aux coordonées : (" + (colIndex + 1) + ", " + (rowIndex + 1) + ")");
+                // MessageBox.Show("Vous avez édité la case aux coordonées : (" + (colIndex + 1) + ", " + (rowIndex + 1) + ")");
 
             }
             catch (InvalidCastException)
@@ -103,13 +139,13 @@ namespace Sudoku
                 throw;
             }
 
-            if (correctValue(colIndex, rowIndex, value))
+            if (correctValue(colIndex, rowIndex, valueInt))
             {
-                button.Text = Convert.ToString(value);
+                button.Text = popUpForm.Value;
             }
             else
             {
-                MessageBox.Show("Valeur impossible !");
+                MessageBox.Show("Valeur incorrect !");
             }
             popUpForm.Dispose();
         }
@@ -123,8 +159,12 @@ namespace Sudoku
         /// <returns></returns>
         private bool correctValue(int colIndex, int rowIndex, int value)
         {
-            // TODO : à implémenter avec le merge
-            return true;
+            if (value == 0)
+            {
+                return false;
+            }
+            // return grille.nestPasDansCarre(value, colIndex, rowIndex);
+            return grille.Solution[colIndex, rowIndex] == value;
         }
 
         /// <summary>
@@ -151,7 +191,7 @@ namespace Sudoku
         /// <param name="e"></param>
         private void buttonSolution_Click(object sender, EventArgs e)
         {
-            F_Solution f_solution = new F_Solution();
+            F_Solution f_solution = new F_Solution(grille.Solution);
             f_solution.ShowDialog(this);
         }
 
@@ -163,6 +203,31 @@ namespace Sudoku
         private void buttonReset_Click(object sender, EventArgs e)
         {
             // this.FillGrille() ...
+        }
+
+        /// <summary>
+        /// Bouton recommencer : raffiche la solution partielle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void reset_Click(object sender, EventArgs e)
+        {
+            TableLayoutPanel g = Grille;
+            for (int col = 0; col < g.ColumnCount; col++)
+            {
+                for (int row = 0; row < g.RowCount; row++)
+                {
+                    Button b = (Button) g.GetControlFromPosition(col, row);
+                    if (grille.Partielle[col, row] == 0)
+                    {
+                        b.Text = "";
+                    }
+                    else
+                    {
+                        b.Text = Convert.ToString(grille.Partielle[col, row]);
+                    }
+                }
+            }
         }
     }
 }

@@ -31,6 +31,7 @@
             this.title = new System.Windows.Forms.Label();
             this.buttonSolution = new System.Windows.Forms.Button();
             this.Grille = new System.Windows.Forms.TableLayoutPanel();
+            this.reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // title
@@ -47,7 +48,7 @@
             // 
             // buttonSolution
             // 
-            this.buttonSolution.Location = new System.Drawing.Point(352, 502);
+            this.buttonSolution.Location = new System.Drawing.Point(299, 501);
             this.buttonSolution.Name = "buttonSolution";
             this.buttonSolution.Size = new System.Drawing.Size(75, 23);
             this.buttonSolution.TabIndex = 2;
@@ -83,11 +84,22 @@
             this.Grille.Size = new System.Drawing.Size(515, 409);
             this.Grille.TabIndex = 0;
             // 
+            // reset
+            // 
+            this.reset.Location = new System.Drawing.Point(389, 501);
+            this.reset.Name = "reset";
+            this.reset.Size = new System.Drawing.Size(90, 23);
+            this.reset.TabIndex = 3;
+            this.reset.Text = "Recommencer";
+            this.reset.UseVisualStyleBackColor = true;
+            this.reset.Click += new System.EventHandler(this.reset_Click);
+            // 
             // F_Sudoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 584);
+            this.Controls.Add(this.reset);
             this.Controls.Add(this.buttonSolution);
             this.Controls.Add(this.title);
             this.Controls.Add(this.Grille);
@@ -103,6 +115,7 @@
         private System.Windows.Forms.TableLayoutPanel Grille;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Button buttonSolution;
+        private System.Windows.Forms.Button reset;
     }
 }
 

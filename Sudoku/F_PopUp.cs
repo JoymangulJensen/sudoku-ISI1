@@ -16,6 +16,24 @@ namespace Sudoku
         private TableLayoutPanel table;
 
         /// <summary>
+        /// Future valeur de la case, par défaut vide
+        /// </summary>
+        private String value = "";
+
+        public string Value
+        {
+            get
+            {
+                return value;
+            }
+
+            set
+            {
+                this.value = value;
+            }
+        }
+
+        /// <summary>
         /// Formulaire Pop Up permettant d'éditer une case : affiche un pavé numérique
         /// </summary>
         /// <param name="previousValue"> Valeur de la case avant édition</param>
@@ -68,24 +86,6 @@ namespace Sudoku
         {
             this.value = ((Button)sender).Text;
             this.Hide();
-        }
-
-        /// <summary>
-        /// Future valeur de la case, par défaut vide
-        /// </summary>
-        private String value = "";
-
-        public string Value
-        {
-            get
-            {
-                return value;
-            }
-
-            set
-            {
-                this.value = value;
-            }
         }
     }
 }

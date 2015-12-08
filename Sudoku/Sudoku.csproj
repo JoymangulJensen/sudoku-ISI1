@@ -62,6 +62,7 @@
     <Compile Include="F_Sudoku.Designer.cs">
       <DependentUpon>F_Sudoku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Grille.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="F_PopUp.resx">

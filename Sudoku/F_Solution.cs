@@ -15,11 +15,10 @@ namespace Sudoku
         /// <summary>
         /// Constructeur du formulaire : On rempli simplement la grille avec tous les chiffres de la solution
         /// </summary>
-        public F_Solution()
+        public F_Solution(int[,] content)
         {
             InitializeComponent();
-            int[,] content = new int[9, 9];
-            content = F_Sudoku.FillContentTest(content);
+            // content = F_Sudoku.FillContentTest(content);
             FillGrilleSolution(GrilleSolution, content);
         }
 
