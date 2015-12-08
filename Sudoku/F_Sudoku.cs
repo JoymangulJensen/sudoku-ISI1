@@ -107,6 +107,7 @@ namespace Sudoku
             {
                 button.Text = Convert.ToString(value);
             }
+            else
             {
                 MessageBox.Show("Valeur impossible !");
             }
