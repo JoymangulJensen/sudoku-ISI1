@@ -17,7 +17,11 @@ namespace Sudoku
             InitializeComponent();
             Grille jeux = new Grille();
             jeux.generateGame();
-            this.richTextBox1.Text = jeux.ToString();
+            this.richTextBox1.Text = jeux.ToString(jeux.Solution);
+            this.richTextBox1.Text += "\n \n \n \n \n";
+            jeux.cacher(50);
+            this.richTextBox1.Text += jeux.ToString(jeux.Partielle);
+
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)

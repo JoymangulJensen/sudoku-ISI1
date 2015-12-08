@@ -12,6 +12,12 @@ namespace Sudoku
         private int[,] solution;
         private int[,] partielle;
 
+        public int[,] Partielle
+        {
+            get { return partielle; }
+            set { partielle = value; }
+        }
+
         public int[,] Solution
         {
             get { return solution; }
@@ -132,15 +138,46 @@ namespace Sudoku
             return true;
         }
 
+        public void cacher(int c)
+        {
+            int i = 0;
+            this.partielle = this.clone(this.Solution);
+            do
+            {
+                Random rand = new Random();
+                int lig = rand.Next(0, 9);
+                int col = rand.Next(0, 9);
+                if(this.partielle[lig,col] !=0)
+                {
+                    this.partielle[lig, col] = 0;
+                    i++;
+                }
+
+            } while ((i < c));
+        }
+
+        public int[,] clone(int[,] source)
+        {
+            int[,] res = new int[source.GetLength(0), source.GetLength(1)];
+            for (int i = 0; i < source.GetLength(0); i++)
+            {
+                for (int j = 0; j < source.GetLength(1); j++)
+                {
+                    res[i, j] = source[i,j];
+                }
+            }
+            return res;
+        }
+
         
-        public string ToString()
+        public string ToString(int[,] g)
         {
             string s = "";
-            for (int i = 0; i < this.solution.GetLength(0); i++)
+            for (int i = 0; i < g.GetLength(0); i++)
             {
-                for (int j = 0; j < this.solution.GetLength(1); j++)
+                for (int j = 0; j <g.GetLength(1); j++)
                 {
-                    s += this.solution.GetValue(i, j) + " ";
+                    s += g.GetValue(i, j) + " ";
                 }
                 s += "\n";
             }
