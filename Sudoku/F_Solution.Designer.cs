@@ -80,7 +80,7 @@
             this.Controls.Add(this.titleSolution);
             this.Controls.Add(this.GrilleSolution);
             this.Name = "F_Solution";
-            this.Text = "F_Solution";
+            this.Text = "Solution";
             this.ResumeLayout(false);
             this.PerformLayout();
 
